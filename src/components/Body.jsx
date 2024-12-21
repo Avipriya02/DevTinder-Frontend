@@ -2,34 +2,43 @@ import React, { useEffect } from "react";
 import Navbar from './Navbar';
 import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import BASE_URL from "../utils/constants";
-import { removeUser } from "../utils/userSlice";
+import { addUser } from "../utils/userSlice";
+import Cookies from "js-cookie";
+
+
 
 const Body = () => {
 
-    const navigator = useNavigate();
+    const navigate = useNavigate();
 
     const userData = useSelector((store)=>store.user);
+
+    const dispatch = useDispatch();
 
     const fetchUser = async() => {
         try{
             if(userData){
-                return;
+                const token = Cookies.get('token');
+                if(token){
+                    return
+                }
             }
-            const res = await axios.get(BASE_URL +  '/profile/view',{withCredentials:true});
+            const res = await axios.get(BASE_URL +  '/profile/view', {withCredentials:true});
+            dispatch(addUser(res.data.data));
         }
         catch(err){
             if(err.status===401){
-                navigator('/login');
+                navigate('/login');
             }
             console.log(err.message);
         }
     }
 
     useEffect(()=>{
-        fetchUser();
+            fetchUser();
     },[]);
 
     return(
