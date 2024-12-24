@@ -35,9 +35,11 @@ const Feed = () => {
         getFeed();
     }, []);
 
-    if(!feedData || feedData.length===0){
+    if(!feedData){
+        return (<h1 className="text-bold text-center text-2xl my-10">Please Wait....</h1>);
+    }
+    else if(feedData.length===0){
         return (<h1 className="text-bold text-center text-2xl my-10">Nothing to show to your feed currently!</h1>);
-
     }
     return (
         feedData && (

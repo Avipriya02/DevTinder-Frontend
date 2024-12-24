@@ -25,7 +25,10 @@ const Connections = () => {
     }, []);
 
 
-    if (!connectionList || connectionList.length === 0) {
+    if (!connectionList){
+        return <h1 className="text-bold text-center text-2xl my-10">Please Wait.....</h1>;
+    } 
+    else if(connectionList.length === 0) {
         return <h1 className="text-bold text-center text-2xl my-10">No Connections Found!</h1>;
     }
 

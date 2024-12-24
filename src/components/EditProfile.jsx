@@ -38,7 +38,7 @@ const EditProfile = ({ user }) => {
         <>
             <div className="flex flex-wrap justify-center my-5 pb-16 gap-5">
                 {
-                 showToast && <div className="toast toast-top toast-center">
+                 showToast && <div className="toast toast-top toast-center z-10">
                     <div className="alert alert-success">
                     <span>Profile Saved successfully.</span>
                     </div>

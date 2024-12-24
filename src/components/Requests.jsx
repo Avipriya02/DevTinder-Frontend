@@ -33,7 +33,10 @@ const Requests = () => {
         
     }, [dispatch]);
 
-    if (!connectionRequestsFetch || connectionRequestsFetch.length === 0) {
+    if (!connectionRequestsFetch) {
+        return <h1 className="text-bold text-center text-2xl my-10">Please Wait....</h1>;
+    }
+    else if(connectionRequestsFetch.length === 0){
         return <h1 className="text-bold text-center text-2xl my-10">No Requests Found!</h1>;
     }
 
@@ -46,7 +49,7 @@ const Requests = () => {
                         key={connectionRequest._id}
                         className="card bg-base-300 w-96 shadow-md flex flex-col items-center"
                     >
-                        <figure className="px-5 pt-5 h-48 w-48 flex items-center justify-center">
+                        <figure className="px-5 pt-5 h-[200px] w-[200px] flex justify-center items-center">
                             <img
                                 src={connectionRequest.fromUserId.imageUrl}
                                 alt="Not Available"

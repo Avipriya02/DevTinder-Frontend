@@ -1,3 +1,3 @@
-const BASE_URL = 'http://localhost:7670';
+const BASE_URL = 'https://devtinder-backend-mfjh.onrender.com';
 
 export default BASE_URL;
