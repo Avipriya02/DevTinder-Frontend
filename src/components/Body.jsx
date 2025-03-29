@@ -44,7 +44,9 @@ const Body = () => {
     return(
         <>
             <Navbar/>
-            <Outlet/>
+            <div className="min-h-screen">
+                <Outlet />
+            </div>
             <Footer/>
         </>
     )
