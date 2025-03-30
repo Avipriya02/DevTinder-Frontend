@@ -34,7 +34,7 @@ const UserCard = ({ user }) => {
                     <div className="mb-3">{user.about}</div>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary" onClick={()=> handleRequest('interested',user._id)}>Interested</button>
-                        <button className="btn btn-secondary" onClick={()=>handleRequest('ignored',user._id)}>Ignored</button>
+                        <button className="btn btn-secondary" onClick={()=>handleRequest('ignored',user._id)}>Ignore</button>
                     </div>
                 </div>
             </div>
