@@ -110,7 +110,7 @@ const EditProfile = ({ user }) => {
                             <div className="mb-3">{about}</div>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary" disabled>Interested</button>
-                                <button className="btn btn-secondary" disabled>Ignored</button>
+                                <button className="btn btn-secondary" disabled>Ignore</button>
                             </div>
                         </div>
                     </div>
