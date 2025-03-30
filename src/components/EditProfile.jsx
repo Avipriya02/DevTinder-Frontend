@@ -21,12 +21,12 @@ const EditProfile = ({ user }) => {
     const updateProfile = async () => {
         try {
             setError('');
-            const res = await axios.patch(BASE_URL + '/profile/edit', { firstName, lastName, age, gender, "imageUrl":photoUrl, about }, { withCredentials: true });
+            const res = await axios.patch(BASE_URL + '/profile/edit', { firstName, lastName, age, gender, "imageUrl": photoUrl, about }, { withCredentials: true });
             dispatch(addUser(res?.data?.data));
             setShowToast(true);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setShowToast(false);
-            },3000);
+            }, 3000);
 
         }
         catch (err) {
@@ -38,15 +38,15 @@ const EditProfile = ({ user }) => {
         <>
             <div className="flex flex-wrap justify-center my-5 pb-16 gap-5">
                 {
-                 showToast && <div className="toast toast-top toast-center z-10">
-                    <div className="alert alert-success">
-                    <span>Profile Saved successfully.</span>
+                    showToast && <div className="toast toast-top toast-center z-10">
+                        <div className="alert alert-success">
+                            <span>Profile Saved successfully.</span>
+                        </div>
                     </div>
-                </div>
                 }
                 <div className="card bg-base-300 w-[400px] shadow-md">
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title text-xl font-semibold">Profile</h2>
+                        <h2 className="card-title text-xl font-semibold">Update Profile</h2>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">First Name</span>
@@ -93,7 +93,29 @@ const EditProfile = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <UserCard user={{ firstName, lastName, age, gender, imageUrl: photoUrl, about }} />
+                <div className="flex justify-center mt-5">
+                    <div className="card bg-base-300 w-80 h-fit shadow-xl">
+                        <figure className="h-50 w-50">
+                            <img
+                                src={user.imageUrl}
+                                className="object-cover"
+                                alt="User" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{firstName} {lastName? lastName : ""}</h2>
+                            <div className="mb-3">
+                                {age != null ? `${age}, ` : ""}
+                                {gender}
+                            </div>
+                            <div className="mb-3">{about}</div>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary" disabled>Interested</button>
+                                <button className="btn btn-secondary" disabled>Ignored</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
         </>
